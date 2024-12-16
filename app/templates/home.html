@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Welcome to the Homepage</h2>
+    <p>This is the main landing page after passing the authentication.</p>
+    <a href="{{ url_for('main.logout') }}">Logout</a>
+{% endblock %}
