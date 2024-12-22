@@ -1,13 +1,24 @@
 {% extends 'base.html' %}
+
 {% block content %}
     <h2>Login</h2>
     <nav>
         <a href="{{ url_for('main.register') }}">Register</a>
     </nav>
-    <form method="POST">
+    <form method="POST" action="{{ url_for('main.login') }}" novalidate>
         {{ form.hidden_tag() }}
-        {{ form.email.label }} {{ form.email }}
-        {{ form.password.label }} {{ form.password }}
-        {{ form.submit }}
+        <div>
+            {{ form.email.label }}
+            {{ form.email(id="email", class="form-control") }}
+        </div>
+        <div>
+            {{ form.password.label }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <div>
+            {{ form.remember(class="form-check-input", id="remember") }}
+            {{ form.remember.label(class="form-check-label", for="remember") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
 {% endblock %}
