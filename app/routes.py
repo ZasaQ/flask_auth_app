@@ -15,7 +15,7 @@ def home():
 @main.route("/home")
 @login_required
 def dashboard():
-    return render_template("home.html", title="Home")
+    return render_template("home.html", title="Home", user=current_user)
 
 @main.route("/register", methods=["GET", "POST"])
 def register():
