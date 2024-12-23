@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from app import db, bcrypt
-from app.models import User
+from app.models import User, Product
 from app.forms import RegistrationForm, LoginForm
 from flask_login import login_user, logout_user, current_user, login_required
 
@@ -15,7 +15,8 @@ def home():
 @main.route("/home")
 @login_required
 def dashboard():
-    return render_template("home.html", title="Home", user=current_user)
+    products = Product.query.all()
+    return render_template("home.html", title="Home", user=current_user, products=products)
 
 @main.route("/register", methods=["GET", "POST"])
 def register():

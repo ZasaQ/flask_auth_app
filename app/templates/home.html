@@ -6,5 +6,16 @@
     <p>User: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Admin Status: {{ 'Yes' if user.is_admin else 'No' }}</p>
+    <h3>Products</h3>
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.name }}</strong> - {{ product.amount }} - ${{ product.price }} <br>
+                <small>{{ product.description }}</small>
+            </li>
+        {% else %}
+            <p>No products available.</p>
+        {% endfor %}
+    </ul>
     <a href="{{ url_for('main.logout') }}">Logout</a>
 {% endblock %}
